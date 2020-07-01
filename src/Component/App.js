@@ -5,6 +5,7 @@ import Search from "./Search";
 import DataTable from "./DataTable";
 import Add from "./Add";
 import Data from "./data.json";
+import DataRow from "./DataRow";
 
 const uuidv1 = require('uuid/v1');
 
@@ -33,7 +34,7 @@ class App extends Component {
     console.log(user);
   }
 
-  delClick = (idDel) => {
+  delClick1 = (idDel) => {
     var tempData = this.state.dataUser.filter(item => item.id !== idDel);
     this.setState({
       dataUser : tempData
@@ -42,7 +43,7 @@ class App extends Component {
   }
 
   getNewUser = (username) => {
-
+    console.log(username);
     var item = {};
     item.id = uuidv1();
     item.name = username.fName;
@@ -70,6 +71,18 @@ class App extends Component {
     });
   };
 
+  mappingData = (result) => {
+    return result.map((value, key) => (
+      <DataRow
+        delClick3={(idDel) => this.delClick1(idDel)}
+        editClick={(user) => this.editFun(value)}
+        data={value}
+        key={key}
+        stt={key}
+      />
+    ));
+  };
+
   render() {
     var result = [];
     this.state.dataUser.forEach((item) => {
@@ -88,7 +101,9 @@ class App extends Component {
                 contact={() => this.changeButton()}
                 display={this.state.displayForm}
               />
-              <DataTable delClick={(idDel) => this.delClick(idDel)} editFun1 = {(user) => this.editFun(user)} display={this.state.displayForm} data={result} />
+              <DataTable>
+                {this.mappingData(result)}
+              </DataTable>
               <Add
                 addUser={(username) => this.getNewUser(username)}
                 display={this.state.displayForm}

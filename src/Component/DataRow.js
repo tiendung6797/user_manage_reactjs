@@ -2,9 +2,9 @@ import React, { Component } from "react";
 
 class DataRow extends Component {
   permissionShow = () => {
-    if (this.props.data.permission === 1) {
+    if (this.props.data.permission === 1 || this.props.data.permission === "1") {
       return "Admin";
-    } else if (this.props.data.permission === 2) {
+    } else if (this.props.data.permission === 2 || this.props.data.permission === "2") {
       return "Editor";
     } else {
       return "User";
@@ -12,11 +12,12 @@ class DataRow extends Component {
   };
 
   editRow = () => {
-    this.props.editClick();
+   this.props.editClick();
+   //console.log(this.props.data);
   }
 
   delRow = (idDel) => {
-    this.props.delClick(idDel);
+    this.props.delClick3(idDel);
   }
 
   render() {
@@ -32,7 +33,7 @@ class DataRow extends Component {
               <i className="fa fa-edit    "/>
               Edit
             </div>
-            <div className="btn btn-danger xoa" onClick = {(idDel) => this.delRow(this.props.data.id)}>
+            <div className="btn btn-danger xoa" onClick = {() => this.delRow(this.props.data.id)}>
               <i className="fa fa-trash-o   " />
               Delete
             </div>

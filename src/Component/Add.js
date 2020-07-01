@@ -52,7 +52,7 @@ class Add extends Component {
               <input
                 type="reset"
                 className="btn btn-block btn-primary"
-                onClick={(userItem) => this.props.addUser(this.state)}
+                onClick={() => this.props.addUser(this.state)}
                 value="Add"
               />
             </div>

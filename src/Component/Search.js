@@ -51,7 +51,7 @@ class Search extends Component {
                 onChange={(event) => this.isChange(event)}
                 placeholder="Nhập từ khóa"
               />
-              <div className="btn btn-info" onClick={(textSearch) => this.props.getText(this.state.tempSearch)}> Tìm </div>
+              <div className="btn btn-info" onClick={() => this.props.getText(this.state.tempSearch)}> Tìm </div>
             </div>
           </div>
           <div className="col-3"> {this.displayButton()} </div>
